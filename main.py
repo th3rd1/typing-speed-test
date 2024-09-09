@@ -1,9 +1,6 @@
-import tkinter
-from tkinter import *
 import customtkinter
 import random
-from time import sleep
-import time
+
 
 
 # set constants
@@ -33,6 +30,9 @@ word_list = ["english", "reflection", "time", "more", "old", "age", "begin", "af
          "real", "fake", "help", "picture", "computer", "day", "night", "true", "false", "row", "column", "main",
          "find", "trust", "lies", "myth", "by", "and", "it", "bite", "right", "wrong", "watch", "type", "listen",
          "touch", "find", "lose", "forget", "win", "doubt", "ask", "answer"]
+
+
+
 
 def word_count(string):
     count = 0
@@ -118,7 +118,7 @@ def check_wpm(initial_text, inputted_text):
         correct_pct = (wpm / total_words) * 100
     except ZeroDivisionError:
         pass
-    wpm_label.configure(text=f"Your typing speed is {adj_wpm} correct words per minute, and you made {mistakes} mistakes this time.\nYour typing accuracy was {correct_pct}%")
+    wpm_label.configure(text=f"Your typing speed is {str(adj_wpm)} correct words per minute, and you made {mistakes} mistakes this time.\nYour typing accuracy was {correct_pct}%")
 
 
 #TODO 8 - create results screen (showing: words typed, words typed correctly, accuracy %, wpm)
@@ -133,24 +133,36 @@ def reset():
     global t
     reset = ""
     var.set(reset)
-    user_text_box.delete(0.0, 'end')
-    t = 0
-    wpm_label.configure(text="")
     user_text_box.configure(state="normal")
+    user_text_box.delete(0.0, 'end')
+    user_text_box.configure(state="disabled")
+    if t:
+        t=0
+        t = TIMER
+    else:
+        t = TIMER
+    print("time reset")
+    wpm_label.configure(text="")
 
 
+
+# CTk items
 # CTk items
 root = customtkinter.CTk()
 root.title("Typing Speed Test")
 root.geometry("1200x700")
 
-instructions_label = customtkinter.CTkLabel(root, text=instructions)
+var = customtkinter.StringVar()
+var.set(guide_typing_words)
+
+
+instructions_label = customtkinter.CTkLabel(root, text=instructions, font=("Ariel", 16))
 instructions_label.pack(padx=5, pady=5)
 
 button_frame = customtkinter.CTkFrame(root, fg_color="transparent")
 button_frame.pack()
 canvas = customtkinter.CTkCanvas(button_frame, width=300, height=50)
-timer_text = canvas.create_text(150, 25, text="30 Seconds", fill="black", font=("Purisa", 24))
+timer_text = canvas.create_text(150, 25, text=f"{TIMER} Seconds", fill="black", font=("Purisa", 24))
 
 generate_text_button = customtkinter.CTkButton(button_frame, text="Generate Text", command=generate_text)
 generate_text_button.grid(row=0, column=0)
@@ -158,8 +170,7 @@ generate_text_button.grid(row=0, column=0)
 reset_text_button = customtkinter.CTkButton(button_frame, text="Reset", command=reset)
 reset_text_button.grid(row=0, column=2)
 
-var = customtkinter.StringVar()
-var.set(guide_typing_words)
+
 text_label = customtkinter.CTkLabel(root, textvariable=var, wraplength=1000, font=("Ariel", 16))
 text_label.pack(pady=15)
 
