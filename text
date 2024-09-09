@@ -1,10 +1,11 @@
-words = [english, reflection, time, more, old, age, begin, after, young, project, was, hard, soft, next, before, what,
-how, little, big, house, place, problem, find, search, never, always, could, follow, last, first, child, where, because,
-face, leg, arm, find, line, well, many, feel, good, he, she, it, so, need, interest, high, low, through, say, mean,
-stand, will, part, early, late, begin, end, long, short, plan, hand, foot, camera, computer, monkey, dog, cat, bird, sought,
-study, many, work, present, write, read, type, trust, fight, find, against, madness, life, system, possible, by,
-develop, general, nation, much, back, fact, no, change, same, just, real, fake, help]
-
-
-    if guide_typing_words == ""
-        select_words(word_list)
+word_list = ["english", "reflection", "time", "more", "old", "age", "begin", "after", "young", "project", "was", "hard",
+         "soft", "next", "before", "what","how", "little", "big", "house", "place", "problem", "find", "search",
+         "never", "always", "could", "follow", "last", "first", "child", "where", "because","face", "leg", "arm",
+         "find", "line", "well", "many", "feel", "good", "he", "she", "it", "so", "need", "interest", "high", "low",
+         "through", "say", "mean","stand", "will", "part", "early", "late", "begin", "end", "long", "short", "plan",
+         "hand", "foot", "camera", "computer", "monkey", "dog", "cat", "bird", "sought","study", "many", "work",
+         "present", "write", "read", "type", "trust", "fight", "find", "against", "madness", "life", "system",
+         "possible", "by","develop", "general", "nation", "much", "back", "fact", "no", "change", "same", "just",
+         "real", "fake", "help", "picture", "computer", "day", "night", "true", "false", "row", "column", "main",
+         "find", "trust", "lies", "myth", "by", "and", "it", "bite", "right", "wrong", "watch", "type", "listen",
+         "touch", "find", "lose", "forget", "win", "doubt", "ask", "answer"]
